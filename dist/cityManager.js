@@ -1,22 +1,68 @@
 class CityManager {
     constructor() {
-        this.cityData = []
+        this.favouriteCities = []
+        this.currentCity = null
     }
 
-    getDataFromDB() {
-        $.get('cities', function (cities) {
-            this.cityData = cities
-            console.log(this.cityData);
+    /*  async getDataFromDB() {
+         $.get('cities').then((cities) => {
+             this.favouriteCities = cities
+             console.log(this.favouriteCities);
+         })
+     } */
+
+    async getDataFromDB() {
+        this.favouriteCities = await $.get('cities')
+        console.log(this.favouriteCities);
+    }
+
+    /*  getCityData(cityName) {
+         $.get(`city/${cityName}`, function (city) {
+             console.log(city);
+             this.currentCity = city
+         })
+     } */
+    async getCityData(cityName) {
+        this.currentCity = await $.get(`city/${cityName}`)
+    }
+
+    saveCity(city) {
+        $.post('city', city, function (response) {
+            console.log(response)
         })
     }
+    /* async saveCity(city) {
+        await $.post('city', city)
+    } */
 
-    getCityData(cityName) {
-        $.get(`city/${cityName}`, function (city) {
-            console.log(city);
-
+    /* async removeCity(cityName) {
+        await $.ajax({
+            url: `city/${cityName}`,
+            method: "DELETE",
+            success: function (updatedCities) {
+                this.favouriteCities = updatedCities
+                console.log(this.favouriteCities)
+            }
+        })
+    } */
+    async removeCity(cityName) {
+        this.favouriteCities = await $.ajax({
+            url: `city/${cityName}`,
+            method: "DELETE"
         })
     }
 }
-cm = new CityManager()
-cm.getDataFromDB()
-cm.getCityData('london')
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,8 +9,13 @@ router.get('/city/:cityName', function (req, res) {
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
     request(apiURL, function (error, response, body) {
         const result = JSON.parse(body)
-        res.send(result)
-        console.log(result);
+        const city = new City({
+            name: cityName,
+            temperature: result.main.temp,
+            condition: result.weather[0].description,
+            conditionPic: result.weather[0].main
+        })
+        res.send(city)
     })
 })
 
@@ -34,8 +39,11 @@ router.post('/city', function (req, res) {
 
 router.delete('/city/:cityName', function (req, res) {
     const cityName = req.params.cityName
-    City.deleteOne({ name: cityName }, function (error, response) {
-        res.send(response)
+    City.deleteOne({ name: cityName }, function (error, deletedCity) {
+        City.find({}, function (error, cities) {
+            console.log(deletedCity)
+            res.send(cities)// after deletion return updated collection of cities
+        })
     })
 })
 

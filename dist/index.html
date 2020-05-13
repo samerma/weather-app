@@ -14,6 +14,35 @@
 
 <body>
 
+    <div>
+        <input type="text">
+        <button id="search-btn">search</button>
+    </div>
+    <div id="cities"></div>
+
+    <script id="cities-template"
+            type="text/x-handlebars-template">
+              {{#each cities}}
+                <div class="city" data-name={{name}}>
+                    <p>{{name}}</p>
+                    <p>{{temperature}}</p>
+                    <p>{{condition}}</p>
+                    <button class="remove-btn">remove</button>
+                </div>
+                
+            {{/each}}
+    </script>
+    <script id="city-search-result-template"
+            type="text/x-handlebars-template">
+                <div class="city">
+                    <p>{{name}}</p>
+                    <p>{{temperature}}</p>
+                    <p>{{condition}}</p>
+                </div>
+                <button class="save-btn">save</button>
+    </script>
+
+
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="cityManager.js"></script>
