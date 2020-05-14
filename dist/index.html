@@ -11,7 +11,7 @@
           href="style.css" />
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
             data-auto-replace-svg="nest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Source+Sans+Pro&display=swap"
           rel="stylesheet">
 
 </head>
@@ -22,7 +22,7 @@
         <div id="search-bar">
             <i class="fas fa-chevron-left"></i>
             <input type="text"
-                   placeholder="Search cities">
+                   placeholder="Search Cities">
             <i id="search-btn"
                class="fas fa-search fa-lg"></i>
         </div>
@@ -45,13 +45,19 @@
     <script id="city-search-result-template"
             type="text/x-handlebars-template">
                 <div class="city">
-                    <p class="te">{{temperature}}</p>
+                    <div class="temp-box">
+                        <div class="temp">{{temperature}}<span class="o">°</span></div>
+                    </div>
                     <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
-                    <p class="na">{{name}}</p>
-                    <p class="cond">{{condition}}</p>
-                    
+                    <p class="name">{{name}}</p>
+                    <p class="condition">{{condition}}</p>
+                    {{#if isSaved}}
+                        <i disabled class="fas fa-star saved-btn"></i>
+                        {{else}}
+                        <i class="far fa-star save-btn"></i>
+                    {{/if}}
                 </div>
-                <button class="save-btn">save</button>
+                
     </script>
 
 

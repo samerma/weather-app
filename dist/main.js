@@ -17,8 +17,10 @@ $('#search-btn').on('click', function () {
     handleSearch(cityName)
 })
 
-$('#cities').on('click', '.save-btn', function () {
-    cityManager.saveCity(cityManager.currentCity)
+$('#cities').on('click', '.save-btn', async function () {
+    await cityManager.saveCity(cityManager.currentCity)
+    cityManager.currentCity.isSaved = true
+    renderer.renderCities(cityManager.currentCity, 'city-search-result-template')
 })
 
 $('#cities').on('click', '.remove-btn', async function () {

@@ -1,36 +1,69 @@
 .city{
-    display: grid;
-    grid-template-areas: "te"
-                          "i"
-                          "na"
-                          "c";
     width: 80%;
-    border-bottom: thin solid black;
+    text-align: center;
+    margin-top: 30px;
+}
+.city>.temp-box>.temp{
+    font-size: 80px;
+    margin-bottom: 5px;
+    font-family: 'Barlow', sans-serif;
+    color: #FFF1D0;
+}
+.city>.temp-box>{
+    position: absolute;
+}
+.city>.temp-box>.temp>.o{
+    position: absolute;
+    top: 20px;
+    font-size: 20px;
+    font-family: 'Barlow', sans-serif;
+    color: #FFF1D0;
+}
+.city>.name{
+    font-family: 'Barlow', sans-serif;
+    font-size: xx-large;
+    color: #FFF1D0;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.city>.condition{
+    font-family: 'Barlow', sans-serif;
+    font-size: large;
+    color: #FFF1D0;
+    margin-bottom: 50px;
+}
+.city>.save-btn{
+    font-size: 50px;
+    color: #F0C808;
+}
+.city>.saved-btn{
+    font-size: 50px;
+    color: #F0C808;
 }
 .cities{
     display: grid;
     grid-template-areas: "n t b";
     grid-template-columns: 1fr 1fr 1fr;
     width: 80%;
-    border-bottom: thin solid black;
+    border-bottom: thin solid #34495e;
 }
-.name{
+.cities>.name{
     grid-area: 'n';
     font-family: 'Source Sans Pro', sans-serif;
     justify-self: start;
-    font-size: 1.3rem; 
-    color: whitesmoke;
+    font-size: 1.5rem; 
+    color: #FFF1D0;
 }
-.tempBox{
+.cities>.tempBox{
     grid-area: 't';
     text-align: right;
 } 
-.temp{
+.tempBox>.temp{
     display: inline-block;
     vertical-align: middle;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1.3rem;
-    color: whitesmoke;
+    font-size: 1.5rem;
+    color: #FFF1D0;
 }
 .tempBox>img{
     display: inline-block;
@@ -41,7 +74,7 @@
 .remove-btn{
     grid-area: 'b';
     align-self: center;
-    color: crimson;
+    color: #DD1C1A;
     justify-self: right;
     margin-right: 10%;
     cursor: pointer;
@@ -52,10 +85,15 @@ input{
     margin: 2%;
     font-family: 'Source Sans Pro', sans-serif;
     border: none;
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #5438DC;
     background: transparent;
-    color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    color: #ecf0f1;
+    
+}
+::placeholder{
+     color: #ecf0f1;
+     font-size: 1rem;
 }
 
 #cities{
@@ -65,7 +103,7 @@ input{
     left: 10%;
 }
 #search-btn{
-    color: blue;
+    color: #5438DC;
     font-size: larger;
     margin-left: 2%;
     cursor: pointer;
@@ -80,9 +118,11 @@ input{
 #container{
     position: absolute;
     left: 10%;
-    background-color: chartreuse;
+    background-color: #06AED5;
     width: 80vw;
-    min-height: 80vh;
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/931/388/951/miui-8-weather-background-minimal-hd-wallpaper-preview.jpg');
+    min-height: 90vh;
     background-size: contain;
+}
+.fa-chevron-left{
+    color: #5438DC;
 }

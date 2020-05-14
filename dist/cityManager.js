@@ -12,16 +12,22 @@ class CityManager {
 
     async getCityData(cityName) {
         this.currentCity = await $.get(`city/${cityName}`)
+        this.currentCity.temperature = Math.floor(this.currentCity.temperature)
+        const i = this.favouriteCities.findIndex(c => c.name == this.currentCity.name)
+        if (i !== -1)
+            this.currentCity.isSaved = true
+        else
+            this.currentCity.isSaved = false
     }
 
-    saveCity(city) {
+    /* saveCity(city) {
         $.post('city', city, function (response) {
             console.log(response)
         })
-    }
-    /* async saveCity(city) {
-        await $.post('city', city)
     } */
+    async saveCity(city) {
+        await $.post('city', city)
+    }
 
     async removeCity(cityName) {
         console.log(cityName);
