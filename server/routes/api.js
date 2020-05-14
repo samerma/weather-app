@@ -6,14 +6,14 @@ const City = require('../models/City.js')
 
 router.get('/city/:cityName', function (req, res) {
     const cityName = req.params.cityName
-    const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+    const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=Metric&appid=${apiKey}`
     request(apiURL, function (error, response, body) {
         const result = JSON.parse(body)
         const city = new City({
-            name: cityName,
+            name: result.name,
             temperature: result.main.temp,
             condition: result.weather[0].description,
-            conditionPic: result.weather[0].main
+            conditionPic: result.weather[0].icon
         })
         res.send(city)
     })

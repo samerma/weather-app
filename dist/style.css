@@ -1,0 +1,58 @@
+.cities{
+    display: grid;
+    grid-template-areas: "n t b";
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+}
+.name{
+    grid-area: 'n';
+    font-family: 'Source Sans Pro', sans-serif;
+    justify-self: start;
+}
+.tempBox{
+    grid-area: 't';
+    text-align: right;
+} 
+.temp{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+img{
+    display: inline-block;
+    vertical-align: middle;
+    height: 15%;
+    width: 15%;
+}
+.remove-btn{
+    grid-area: 'b';
+    align-self: center;
+    color: crimson;
+    justify-self: center;
+}
+
+input{
+    width: 70%;
+    margin: 2%;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    border-bottom: inset black;
+}
+#cities{
+    margin: 2%;
+    margin-top: 0px;
+}
+#search-btn{
+    color: blue;
+    font-size: larger;
+}
+#search-bar{
+    width: 100%;
+    text-align: start;
+}
+#container{
+    position: absolute;
+    left: 10%;
+    background-color: chartreuse;
+    width: 80%;
+}

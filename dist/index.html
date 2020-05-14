@@ -9,25 +9,34 @@
     <link rel="stylesheet"
           type="text/css"
           href="style.css" />
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+            data-auto-replace-svg="nest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+          rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div>
-        <input type="text">
-        <button id="search-btn">search</button>
+    <div id="container">
+        <div id="search-bar">
+            <input type="text"
+                   placeholder="Search cities">
+            <i id="search-btn"
+               class="fas fa-search"></i>
+        </div>
+        <div id="cities"></div>
     </div>
-    <div id="cities"></div>
-
     <script id="cities-template"
             type="text/x-handlebars-template">
               {{#each cities}}
-                <div class="city" data-name={{name}}>
-                    <p>{{name}}</p>
-                    <p>{{temperature}}</p>
-                    <p>{{condition}}</p>
-                    <button class="remove-btn">remove</button>
+                <div class="cities" data-name="{{name}}">
+                    <p class="name">{{name}}</p>
+                    <div class="tempBox">
+                        <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
+                        <p class="temp">{{temperature}}°</p>
+                    </div>
+                    <i class="far fa-trash-alt remove-btn"></i>
                 </div>
                 
             {{/each}}
@@ -38,12 +47,14 @@
                     <p>{{name}}</p>
                     <p>{{temperature}}</p>
                     <p>{{condition}}</p>
+                    <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
                 </div>
                 <button class="save-btn">save</button>
     </script>
 
 
     <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
     <script src="cityManager.js"></script>
     <script src="renderer.js"></script>

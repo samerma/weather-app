@@ -22,7 +22,7 @@ $('#cities').on('click', '.save-btn', function () {
 })
 
 $('#cities').on('click', '.remove-btn', async function () {
-    const cityName = $(this).closest('.city').data('name')
+    const cityName = $(this).closest('.cities').data('name')
     await cityManager.removeCity(cityName)
     renderer.renderCities(cityManager.favouriteCities, 'cities-template')
 })
