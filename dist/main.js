@@ -26,3 +26,8 @@ $('#cities').on('click', '.remove-btn', async function () {
     await cityManager.removeCity(cityName)
     renderer.renderCities(cityManager.favouriteCities, 'cities-template')
 })
+
+$('.fa-chevron-left').on('click', function () {
+    loadPage()
+    $('input').val('')
+})

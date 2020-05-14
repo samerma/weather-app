@@ -20,10 +20,11 @@
 
     <div id="container">
         <div id="search-bar">
+            <i class="fas fa-chevron-left"></i>
             <input type="text"
                    placeholder="Search cities">
             <i id="search-btn"
-               class="fas fa-search"></i>
+               class="fas fa-search fa-lg"></i>
         </div>
         <div id="cities"></div>
     </div>
@@ -44,10 +45,11 @@
     <script id="city-search-result-template"
             type="text/x-handlebars-template">
                 <div class="city">
-                    <p>{{name}}</p>
-                    <p>{{temperature}}</p>
-                    <p>{{condition}}</p>
+                    <p class="te">{{temperature}}</p>
                     <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
+                    <p class="na">{{name}}</p>
+                    <p class="cond">{{condition}}</p>
+                    
                 </div>
                 <button class="save-btn">save</button>
     </script>

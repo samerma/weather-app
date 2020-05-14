@@ -1,5 +1,9 @@
 class Render {
     renderCities(data, templateId) {
+        if (templateId == 'cities-template')
+            $('.fa-chevron-left').hide()
+        else
+            $('.fa-chevron-left').show()
         $("#cities").empty()
         const source = $('#' + templateId).html()
         const template = Handlebars.compile(source)
