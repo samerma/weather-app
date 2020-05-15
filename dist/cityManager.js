@@ -1,3 +1,4 @@
+
 class CityManager {
     constructor() {
         this.favouriteCities = []
@@ -11,7 +12,10 @@ class CityManager {
     }
 
     async getCityData(cityName) {
-        this.currentCity = await $.get(`city/${cityName}`)
+        const res = await $.get(`city/${cityName}`)
+        if (res == '')
+            return 'error'
+        this.currentCity = res
         this.currentCity.temperature = Math.floor(this.currentCity.temperature)
         const i = this.favouriteCities.findIndex(c => c.name == this.currentCity.name)
         if (i !== -1)
@@ -20,11 +24,6 @@ class CityManager {
             this.currentCity.isSaved = false
     }
 
-    /* saveCity(city) {
-        $.post('city', city, function (response) {
-            console.log(response)
-        })
-    } */
     async saveCity(city) {
         await $.post('city', city)
     }

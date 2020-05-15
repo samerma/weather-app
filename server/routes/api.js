@@ -1,21 +1,33 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
+const urllib = require('urllib')
 const apiKey = 'f5052a6fc2e7f9836ff47bcd3a18f7a8'
 const City = require('../models/City.js')
 
 router.get('/city/:cityName', function (req, res) {
     const cityName = req.params.cityName
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=Metric&appid=${apiKey}`
-    request(apiURL, function (error, response, body) {
-        const result = JSON.parse(body)
-        const city = new City({
-            name: result.name,
-            temperature: result.main.temp,
-            condition: result.weather[0].description,
-            conditionPic: result.weather[0].icon
-        })
-        res.send(city)
+    //request(apiURL, function (error, response, body) {
+    urllib.request(apiURL, function (err, data, response) {
+        console.log(JSON.parse(data));
+        if (err) {
+            throw err
+        }
+        else if (JSON.parse(data).cod == '404') {
+            res.end()
+            console.log('aaaaa');
+        }
+        else {
+            const result = JSON.parse(data)
+            const city = new City({
+                name: result.name,
+                temperature: result.main.temp,
+                condition: result.weather[0].description,
+                conditionPic: result.weather[0].icon
+            })
+            res.send(city)
+        }
     })
 })
 

@@ -35,6 +35,7 @@
 .city>.save-btn{
     font-size: 50px;
     color: #F0C808;
+    cursor: pointer;
 }
 .city>.saved-btn{
     font-size: 50px;
@@ -89,7 +90,7 @@ input{
     background: transparent;
     font-size: 1.2rem;
     color: #ecf0f1;
-    
+    text-transform: capitalize
 }
 ::placeholder{
      color: #ecf0f1;
@@ -125,4 +126,5 @@ input{
 }
 .fa-chevron-left{
     color: #5438DC;
+    cursor: pointer;
 }

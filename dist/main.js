@@ -8,13 +8,15 @@ const loadPage = async function () {
 loadPage()
 
 const handleSearch = async function (cityName) {
-    await cityManager.getCityData(cityName)
-    renderer.renderCities(cityManager.currentCity, 'city-search-result-template')
+    const res = await cityManager.getCityData(cityName)
+    if (res !== 'error')
+        renderer.renderCities(cityManager.currentCity, 'city-search-result-template')
 }
 
 $('#search-btn').on('click', function () {
     const cityName = $('input').val()
-    handleSearch(cityName)
+    if (cityName)
+        handleSearch(cityName)
 })
 
 $('#cities').on('click', '.save-btn', async function () {
