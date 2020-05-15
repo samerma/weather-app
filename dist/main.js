@@ -15,6 +15,7 @@ const handleSearch = async function (cityName) {
 
 $('#search-btn').on('click', function () {
     const cityName = $('input').val()
+    console.log(cityName)
     if (cityName)
         handleSearch(cityName)
 })

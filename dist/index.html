@@ -9,15 +9,13 @@
     <link rel="stylesheet"
           type="text/css"
           href="style.css" />
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
-            data-auto-replace-svg="nest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Source+Sans+Pro&display=swap"
           rel="stylesheet">
-
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+            data-auto-replace-svg="nest"></script>
 </head>
 
 <body>
-
     <div id="container">
         <div id="search-bar">
             <i class="fas fa-chevron-left"></i>
@@ -46,7 +44,7 @@
             type="text/x-handlebars-template">
                 <div class="city">
                     <div class="temp-box">
-                        <div class="temp">{{temperature}}<span class="o">°</span></div>
+                        <h1 class="temp">{{temperature}}&deg;C</h1>
                     </div>
                     <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png">
                     <p class="name">{{name}}</p>

@@ -10,13 +10,11 @@ router.get('/city/:cityName', function (req, res) {
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=Metric&appid=${apiKey}`
     //request(apiURL, function (error, response, body) {
     urllib.request(apiURL, function (err, data, response) {
-        console.log(JSON.parse(data));
         if (err) {
             throw err
         }
         else if (JSON.parse(data).cod == '404') {
             res.end()
-            console.log('aaaaa');
         }
         else {
             const result = JSON.parse(data)

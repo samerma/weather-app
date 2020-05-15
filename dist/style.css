@@ -1,7 +1,16 @@
 .city{
-    width: 80%;
-    text-align: center;
+    width: 75%;
+    height: 500px;
     margin-top: 30px;
+    background-image: url('https://images.unsplash.com/photo-1527674742215-114e5e1254d1');
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .city>.temp-box>.temp{
     font-size: 80px;
@@ -45,8 +54,14 @@
     display: grid;
     grid-template-areas: "n t b";
     grid-template-columns: 1fr 1fr 1fr;
-    width: 80%;
+    width: 90%;
     border-bottom: thin solid #34495e;
+    background-image: url('https://images.unsplash.com/photo-1584381296550-99dfc0837d42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .cities>.name{
     grid-area: 'n';
@@ -59,14 +74,14 @@
     grid-area: 't';
     text-align: right;
 } 
-.tempBox>.temp{
+.cities>.tempBox>.temp{
     display: inline-block;
     vertical-align: middle;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.5rem;
     color: #FFF1D0;
 }
-.tempBox>img{
+.cities>.tempBox>img{
     display: inline-block;
     vertical-align: middle;
     height: 20%;
@@ -79,6 +94,7 @@
     justify-self: right;
     margin-right: 10%;
     cursor: pointer;
+    font-size: 1.5rem;;
 }
 
 input{
@@ -86,7 +102,7 @@ input{
     margin: 2%;
     font-family: 'Source Sans Pro', sans-serif;
     border: none;
-    border-bottom: 2px solid #5438DC;
+    border-bottom: 2px solid #FFF1D0;
     background: transparent;
     font-size: 1.2rem;
     color: #ecf0f1;
@@ -98,13 +114,13 @@ input{
 }
 
 #cities{
-    margin: 2%;
     margin-top: 0px;
-    position: relative;
-    left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #search-btn{
-    color: #5438DC;
+    color: #FFF1D0;
     font-size: larger;
     margin-left: 2%;
     cursor: pointer;
@@ -112,19 +128,20 @@ input{
 #search-bar{
     width: 80%;
     text-align: start;
-    margin-left: 2%;
+    margin-left: 2.5%;
+    margin-top: 10px;
     position: relative;
-    left: 10%;
 }
 #container{
-    position: absolute;
-    left: 10%;
-    background-color: #06AED5;
-    width: 80vw;
-    min-height: 90vh;
-    background-size: contain;
+    width: 100vw;
+    min-height: 100vh;
+    
 }
 .fa-chevron-left{
-    color: #5438DC;
+    color: #FFF1D0;
     cursor: pointer;
+    font-size: larger;
+}
+body{
+    background-color: #333;
 }
