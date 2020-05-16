@@ -63,11 +63,12 @@ router.put('/city/:cityName', function (req, res) {
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=Metric&appid=${apiKey}`
     urllib.request(apiURL, function (err, data, response) {
         const result = JSON.parse(data)
+        const newUpdate = new Date()
         City.findOne({ 'name': cityName }, function (error, city) {
             city.temperature = result.main.temp
             city.condition = result.weather[0].description
             city.conditionPic = result.weather[0].icon
-            city.updatedAt = new Date()
+            city.updatedAt = newUpdate
             city.save(function (err, c) {
                 res.send(c)
             })
