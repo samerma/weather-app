@@ -7,8 +7,21 @@ class CityManager {
 
     async getDataFromDB() {
         this.favouriteCities = await $.get('cities')
+        const now = new Date()
+        for (let city of this.favouriteCities) {
+            const lastUpdate = new Date(city.updatedAt)
+            const timeDiff = (new Date(now - lastUpdate)).getMinutes()
+            console.log(timeDiff);
+            const cityName = city.name
+            if (timeDiff >= 60) {
+                city = await $.ajax({
+                    url: `city/${cityName}`,
+                    method: "PUT"
+                })
+                console.log(`city/${lastUpdate} was updated to ${city.updatedAt}`)
+            }
+        }
         this.favouriteCities.map(c => c.temperature = Math.floor(c.temperature))
-        console.log(this.favouriteCities);
     }
 
     async getCityData(cityName) {
