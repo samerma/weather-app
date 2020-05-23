@@ -7,7 +7,6 @@ const City = require('../models/City.js')
 router.get('/city/:cityName', function (req, res) {
     const cityName = req.params.cityName
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=Metric&appid=${apiKey}`
-    //request(apiURL, function (error, response, body) {
     urllib.request(apiURL, function (err, data, response) {
         if (err) {
             throw err
@@ -52,7 +51,6 @@ router.delete('/city/:cityName', function (req, res) {
     const cityName = req.params.cityName
     City.deleteOne({ name: cityName }, function (error, deletedCity) {
         City.find({}, function (error, cities) {
-            console.log(deletedCity)
             res.send(cities)// after deletion return updated collection of cities
         })
     })
@@ -65,7 +63,7 @@ router.put('/city/:cityName', function (req, res) {
         const result = JSON.parse(data)
         const newUpdate = new Date()
         City.findOne({ 'name': cityName }, function (error, city) {
-            city.temperature = result.main.temp
+            city.temperature = Math.floor(result.main.temp)
             city.condition = result.weather[0].description
             city.conditionPic = result.weather[0].icon
             city.updatedAt = newUpdate

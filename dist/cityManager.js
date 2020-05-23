@@ -7,14 +7,14 @@ class CityManager {
 
     async getDataFromDB() {
         this.favouriteCities = await $.get('cities')
-        const now = new Date().getUTCHours()
+        let now = new Date().toUTCString()
+        now = new Date(now)
         for (let city of this.favouriteCities) {
             const ua = city.updatedAt
-            const lastUpdate = new Date(city.updatedAt).getUTCHours()//getUTCHours solves gmt time diff problem
-            //const timeDiff = (new Date(now - lastUpdate)).getHours()
-            const timeDiff = now - lastUpdate
+            const lastUpdate = new Date(city.updatedAt)
+            const timeDiff = new Date(now - lastUpdate).getUTCHours()
             const cityName = city.name
-            if (timeDiff >= 3) {
+            if (timeDiff >= 2) {
                 city = await $.ajax({
                     url: `city/${cityName}`,
                     method: "PUT"
@@ -22,7 +22,6 @@ class CityManager {
                 console.log(`city/${ua} was updated to ${city.updatedAt}`)
             }
         }
-        this.favouriteCities.map(c => c.temperature = Math.floor(c.temperature))
     }
 
     async getCityData(cityName) {
@@ -43,8 +42,6 @@ class CityManager {
     }
 
     async removeCity(cityName) {
-        console.log(cityName);
-
         this.favouriteCities = await $.ajax({
             url: `city/${cityName}`,
             method: "DELETE"
